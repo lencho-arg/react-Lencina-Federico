@@ -1,7 +1,7 @@
 const Icono =() => {
     return (
         <button>
-            <img src="./bolsa-de-la-compra.png"/>
+            <img src="./anadir-al-carrito.png"/>
         </button>
     )
 }

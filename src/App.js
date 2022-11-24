@@ -1,16 +1,14 @@
 import './App.css';
 import ItemListContainer from './components/ItemListContainer';
-import NavBar from './components/NavBar';
+import {Layout} from './components/Layout'
 
 function App() {
+
   return (
-    <div className="App">
-
-      <NavBar />
-
-      <ItemListContainer gretting={"Hellow"}></ItemListContainer>
-
-    </div>
+      
+      <Layout>
+        <ItemListContainer />
+      </Layout>
   );
 }
 

@@ -3,15 +3,20 @@ import ReactDOM from 'react-dom/client';
 import {RouterProvider} from 'react-router-dom';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import {router} from './components/router'
+import {router} from './router'
 import boostrap from 'bootstrap/dist/css/bootstrap.css'
+import { CartContextProvider } from './context/cartContext'
+
 
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+      <CartContextProvider>
+        <RouterProvider router={router} />
+      </CartContextProvider>
+    
   </React.StrictMode>
 );
 

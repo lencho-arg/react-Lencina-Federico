@@ -1,38 +1,52 @@
-import {useState} from 'react';
+import {useEffect, useState} from 'react';
+import { useParams } from 'react-router-dom';
+
 import { ItemList } from './ItemList';
 import { Loading } from './Loading';
 
-import Productos from './products'
+import { Productos } from '../mocks/items.mock'
 
 const ItemListContainer = () => {
 
-    const [products, setProducts] = useState([])
-    const [hayProduct, setHayProduct] = useState(false)
+    const {category} = useParams();
 
-    const listProduct = new Promise((resolve) =>
-        setTimeout(() =>{
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        new Promise((resolve) => {
+          // Reset the state to show the loading spinner
+          setProducts([]);
+    
+          // Simulation of a call to an api
+          return setTimeout(() => {
             resolve(Productos);
-        }, 2000)
-    );
+          }, 1000);
+        }).then((data) => {
+          // Execute only in the categories views
+          if (category) {
 
-    listProduct
-    .then((data) => setProducts(data))
-    .then((data) => setHayProduct(!data));
+            // const categories = Productos.filter((product) => product.category === category);
+            const categories = data.filter((product) => product.category === category);
+    
+            // Execute only in the home
+            setProducts(categories);
+          } else {
+            setProducts(data);
+          }
+        });
+      }, [category]);
 
-    console.log(products);
+    if (products.length === 0) {
+        return <Loading />;
+    }
 
     return (
-        <div className='itemListContainer'>
-
-            
-            {!hayProduct ? (
-                <Loading />
-            ) : (
-                <ItemList products={products}/>
-            )}
-
+        <div className="h-full">
+            <ItemList products={products} />
         </div>
     );
-};
+}
+
+
 
 export default ItemListContainer

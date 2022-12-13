@@ -1,9 +1,9 @@
-const Icono =() => {
+export const Icono =() => {
     return (
-        <button>
+        <div>
             <img src="./anadir-al-carrito.png" alt="carrito"/>
-        </button>
+        </div>
     )
 }
 
-export default Icono
+export default Icono;

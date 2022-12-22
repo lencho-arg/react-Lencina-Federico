@@ -8,6 +8,18 @@ import boostrap from 'bootstrap/dist/css/bootstrap.css'
 import { CartContextProvider } from './context/cartContext'
 
 
+import { initializeApp } from "firebase/app";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyC9OMSXzVTGWnPD6AF1vbPg_f4MJj0eU1w",
+  authDomain: "ecommerce-bac28.firebaseapp.com",
+  projectId: "ecommerce-bac28",
+  storageBucket: "ecommerce-bac28.appspot.com",
+  messagingSenderId: "384611751550",
+  appId: "1:384611751550:web:e171af27f50dbf290e6a2f"
+};
+
+initializeApp(firebaseConfig);
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -16,7 +28,6 @@ root.render(
       <CartContextProvider>
         <RouterProvider router={router} />
       </CartContextProvider>
-    
   </React.StrictMode>
 );
 

@@ -3,9 +3,12 @@ import { Card} from "react-bootstrap";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import { useGetItemImg } from "../hook/useGetItemImg";
 
 export const Item = ({ product }) => {
   const navigate = useNavigate();
+
+  const img = useGetItemImg(product.img)
 
 
   const handleNavigate = () => {
@@ -15,14 +18,14 @@ export const Item = ({ product }) => {
 
   return (
 
-    <Container className="d-flex justify-content-center text-center p-2">
+    <Container className="d-flex justify-content-center text-center mt-5 pt-2">
 
       <Row>
 
         <Col xs={6}></Col>
 
           <Card className='text-center p-1' style={{ width: '20rem' }}>
-          <img src={product.img} alt="Product"  onClick={handleNavigate}/>
+          <img src={img} alt="Product"  onClick={handleNavigate}/>
             <Card.Header>{product.title}</Card.Header>
 
             <Card.Body>

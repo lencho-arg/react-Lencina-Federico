@@ -5,7 +5,7 @@ import {Link} from "react-router-dom"
 
 function NavBar() {
   return (
-    <Navbar bg='light'>
+    <Navbar bg='light' expand='lg' className='fixed-top mb-4'>
       <Container>
         <Icono />
         <Navbar.Brand href="/">ShopinTravel</Navbar.Brand>

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import { CartContext } from "../context/cartContext";
 import { ItemCount } from "./ItemCount";
+import { useGetItemImg } from "../hook/useGetItemImg";
 
 
 const ItemDetail = ({ item }) => {
@@ -13,6 +14,7 @@ const ItemDetail = ({ item }) => {
   const [count, setCount] = useState(1);
   const [currentStock, setCurrentStock] = useState(item.stock);
   const maxQuantity = currentStock;
+  const img = useGetItemImg(item.img);
 
   function handleCount(type) {
     if (type === "plus" && count < maxQuantity) setCount(count + 1);
@@ -36,7 +38,7 @@ const ItemDetail = ({ item }) => {
       <Card className='p-3' style={{ width: '24rem' }}>
 
       {/* Item image */}
-        <img className="flex w-5/6 bg-white rounded" src={item.img} alt={item.name} />
+        <img className="flex w-5/6 bg-white rounded" src={img} alt={item.name} />
 
       {/* Item title */}
         <Card.Header>{item.title}</Card.Header>

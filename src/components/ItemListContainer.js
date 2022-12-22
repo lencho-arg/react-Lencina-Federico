@@ -10,7 +10,7 @@ import { collection, doc, getDoc, getDocs, getFirestore, query, where } from 'fi
 
 const ItemListContainer = () => {
 
-      const {category, id} = useParams();
+      const { category, id } = useParams();
       const [products, setProducts] = useState([]);
 
     useEffect(() => {
@@ -49,6 +49,7 @@ const ItemListContainer = () => {
           setProducts(result.docs.map((doc) => ({ id: doc.id, ...doc.data() })))
         );
 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     
     }, []);
 
@@ -69,29 +70,3 @@ const ItemListContainer = () => {
 
 
 export default ItemListContainer
-
-
-
-    // useEffect(() => {
-    //     new Promise((resolve) => {
-    //       // Reset the state to show the loading spinner
-    //       setProducts([]);
-    
-    //       // Simulation of a call to an api
-    //       return setTimeout(() => {
-    //         resolve(Productos);
-    //       }, 1000);
-    //     }).then((data) => {
-    //       // Execute only in the categories views
-    //       if (category) {
-
-    //         // const categories = Productos.filter((product) => product.category === category);
-    //         const categories = data.filter((product) => product.category === category);
-    
-    //         // Execute only in the home
-    //         setProducts(categories);
-    //       } else {
-    //         setProducts(data);
-    //       }
-    //     });
-    //   }, [category]);

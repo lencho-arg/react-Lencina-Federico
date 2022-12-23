@@ -51,7 +51,7 @@ const ItemDetailContainer = () => {
         );
 
     
-    }, []);
+    }, [category, id]);
 
 
 
